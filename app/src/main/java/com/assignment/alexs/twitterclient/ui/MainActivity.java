@@ -6,7 +6,6 @@ package com.assignment.alexs.twitterclient.ui;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
@@ -21,7 +20,7 @@ import com.assignment.alexs.twitterclient.R;
 import com.assignment.alexs.twitterclient.model.TWStatus;
 import com.assignment.alexs.twitterclient.utils.Utilities;
 import java.util.ArrayList;
-import services.TWService;
+import com.assignment.alexs.twitterclient.services.TWService;
 
 public class MainActivity extends AppCompatActivity implements IServiceCallback {
     TWAdapter adapter;

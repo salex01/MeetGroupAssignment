@@ -1,4 +1,4 @@
-package services;
+package com.assignment.alexs.twitterclient.services;
 
 /**
  * Created by alexschwartzman on 1/6/18.
