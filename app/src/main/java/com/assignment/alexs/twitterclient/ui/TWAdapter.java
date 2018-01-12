@@ -1,7 +1,7 @@
 package com.assignment.alexs.twitterclient.ui;
 
 /**
- * Created by alexschwartzman on 1/6/18.
+ * Created by alexschwartzman on 1/7/18.
  */
 
 import android.support.v7.widget.RecyclerView;

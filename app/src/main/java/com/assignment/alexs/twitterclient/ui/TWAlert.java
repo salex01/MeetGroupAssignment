@@ -1,7 +1,7 @@
 package com.assignment.alexs.twitterclient.ui;
 
 /**
- * Created by alexschwartzman on 1/6/18.
+ * Created by alexschwartzman on 1/7/18.
  */
 
 import android.app.AlertDialog;
@@ -10,6 +10,8 @@ import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+
+import com.assignment.alexs.twitterclient.R;
 
 
 public class TWAlert extends DialogFragment {
@@ -25,9 +27,9 @@ public class TWAlert extends DialogFragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context)
 
-                .setTitle( "Error")
+                .setTitle( R.string.error)
                 .setMessage( message)
-           .setNegativeButton("Exit",
+           .setNegativeButton(R.string.exit,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 dialog.cancel();

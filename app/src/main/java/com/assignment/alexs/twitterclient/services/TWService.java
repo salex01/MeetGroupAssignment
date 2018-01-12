@@ -1,12 +1,14 @@
 package com.assignment.alexs.twitterclient.services;
 
 /**
- * Created by alexschwartzman on 1/6/18.
+ * Created by alexschwartzman on 1/7/18.
  */
 
+import android.content.Context;
 import android.util.Base64;
 import android.util.Log;
 
+import com.assignment.alexs.twitterclient.R;
 import com.assignment.alexs.twitterclient.model.TWAuthenticationToken;
 import com.assignment.alexs.twitterclient.model.TWSearchResults;
 import com.assignment.alexs.twitterclient.ui.IServiceCallback;
@@ -31,10 +33,12 @@ public class TWService {
     private final String TAG = "TWService";
     private IServiceCallback callback;
     private String query;
+    Context context;
     private static TWAuthenticationToken authToken;
 
-    public TWService(IServiceCallback callback) {
+    public TWService(IServiceCallback callback, Context context) {
         this.callback = callback;
+        this.context =context;
     }
 
     public void getTweets(String query) {
@@ -59,7 +63,7 @@ public class TWService {
                     TWSearchResults result = response.body();
                     callback.onSuccess(result.getStatuses());
                 } else {
-                    callback.onFailure("Failed to get tweets");
+                    callback.onFailure(context.getString(R.string.failure_message));
                 }
             }
 
@@ -90,7 +94,7 @@ public class TWService {
                          @Override
                          public void onFailure(okhttp3.Call call, IOException e) {
                              call.cancel();
-                             callback.onFailure("Failed to obtain token");
+                             callback.onFailure(context.getString(R.string.token_failure));
                          }
 
                          @Override
@@ -99,12 +103,12 @@ public class TWService {
                                  final String myResponse = response.body().string();
                                  authToken = jsonToToken(myResponse);
                                  if (authToken == null) {
-                                     callback.onFailure("Failed to parse token");
+                                     callback.onFailure(context.getString(R.string.parcing_token_failure));
                                  } else {
                                      getTweets(query);
                                  }
                              } else {
-                                 callback.onFailure("Failed to obtain token");
+                                 callback.onFailure(context.getString(R.string.token_failure));
                              }
 
                          }

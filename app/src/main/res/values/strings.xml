@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">TwitterClient</string>
+    <string name="app_name">Twitter Client</string>
+    <string name="please_wait">Please wait...</string>
+    <string name="error">Error</string>
+    <string name="exit">Exit</string>
+    <string name="failure_message">Failed to get tweets</string>
+    <string name="token_failure">Failed to obtain token</string>
+    <string name="parcing_token_failure">Failed to parse token</string>
+    <string name="no_network">No network. The application requires network connection</string>
 </resources>

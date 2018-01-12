@@ -1,7 +1,7 @@
 package com.assignment.alexs.twitterclient.ui;
 
 /**
- * Created by alexschwartzman on 1/8/18.
+ * Created by alexschwartzman on 1/6/18.
  */
 
 import android.app.Activity;
@@ -22,10 +22,10 @@ import com.assignment.alexs.twitterclient.utils.Utilities;
 import java.util.ArrayList;
 import com.assignment.alexs.twitterclient.services.TWService;
 
-public class MainActivity extends AppCompatActivity implements IServiceCallback {
+public class TWMainActivity extends AppCompatActivity implements IServiceCallback {
     TWAdapter adapter;
 
-    final static String LOG_TAG = "MainActivity";
+    final static String LOG_TAG = "TWMainActivity";
     private EditText edtSearch;
 
 
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements IServiceCallback 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if (!Utilities.isNetworkAvailable(this)) {
-            Utilities.showError(this, "no network"/*getString(R.string.no_network)*/);
+            Utilities.showError(this, this.getString(R.string.no_network));
             return;
         }
         Button btnSearch;
@@ -62,14 +62,14 @@ public class MainActivity extends AppCompatActivity implements IServiceCallback 
                String searchText = edtSearch.getEditableText().toString();
              if (searchText.length() > 0) {
                     progressDialog.show();
-                    new TWService(MainActivity.this).getTweets(searchText);
+                    new TWService(TWMainActivity.this,TWMainActivity.this ).getTweets(searchText);
                 }
             }
         });
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progressDialog.setMessage("Please wait...");
+        progressDialog.setMessage(getString(R.string.please_wait));
     }
 
     public void onFailure(String reason) {
